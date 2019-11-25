@@ -33,12 +33,10 @@
           <p class="lead">
             En este proyecto se implementará algunas opciones relacionadas con el registro sencillo de créditos asociados a clientes.
                 <ol>
-                <li>Filtro de datos de una tabla por medio de un input text</li>
-                <li>NgBootstrap + Modales + Manejo de Evento</li>
-                <li>Formularios Reactivos y validación </li>
-                <li>NgBootstrap + Modales + Alert Genérico y Control de Errores</li>
-                
-                
+                <li><a href="FilterTable.html">Filtro de datos de una tabla por medio de un input text</a></li>
+                <li><a href="FormReactive.html"> Formularios Reactivos y validación </a> </li>
+                <li><a href="NgBootstrapModalAlert.html"> NgBootstrap + Modales + Alert Genérico y Control de Errores</a></li>
+                <li><a href="ModalsEvents.html"> Comunicación entre Componentes y eventos</a></li>
                 <li>Seguridad de las Rutas => Guardas</li>
                 <li>Publicar Aplicación Angular+NetCore</li>
                 <li>Publicar en Azure</li>
@@ -51,109 +49,11 @@
         </div>
     </div>
 
-    <div class="accordion" id="accordionExample">
-        <div class="card">
-          <div class="card-header" id="headingOne">
-            <h2 class="mb-0">
-              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Filtro de datos de una tabla por medio de un input text
-              </button>
-            </h2>
-          </div>
-      
-          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-            <div class="card-body">
-                <h5>Controllers/ClienteController.cs</h5><br/>
-                Api que tiene implemendato las operaciones Get para consultar todos los registros de clientes y la consulta de clientes por identificación
-                <br/>
-                <hr/>
-              <h5>cliente-consulta.component.html</h5><br/>
-              Como ejemplo para el filtro se consultará la Api de Clientes y se mostrará en un tabla con NgFor. <br/>
-              <code>
-              &lt;table class="table table-striped" *ngIf='clientes && clientes.length'&gt;
-              </code>
-               <br/>
-              Este componente permitirá filtrar los datos de la tabla  por Nombre y por Teléfono por medio del cuando de texto. <br/>
-              <code>
-                  &lt;input [(ngModel)]="listFilter" type="text" class="form-control" id="filterInput" placeholder="Type to filter"&gt;
-              </code> 
-              <br/>
-              La tabla visualiza los datos de una lista filtrada de clientes. Cada fila tiene habilitado el evento click en cual invoca al método seleccinar. 
-              Esto se utilizará más adelante cuando el usuario pueda seleccionar el usuario que va a realizar el crédito. 
-              <br/>
-              <code>
-                  &lt;tr *ngFor="let cliente of filteredClients; index as i" (click)="seleccionar(cliente)"&gt;
-              </code>  
-               <hr/>
-              <h5>cliente-consulta.component.ts</h5><br/>
-              En el componente se declaran las objetos clientes y clientes filtrados. al iniciar el componente
-              <code>
-                  ngOnInit()
-              </code> se descargan los datos de la Api <code>ClienteService</code> <br/>
-              El listFilter es un propiedad que encapsula a la variable  <code> _listFilter </code>. Este permite que al digitar datos automáticamente 
-              el <code>NgModel</code> invoque al set de la variable y este internamente invoque al método <code>   doFilter(filterBy: string): ClienteViewModel[] </code>
-              Este método compará el valor digitado por el usuario convertido en minúscula <code> filterBy = filterBy.toLocaleLowerCase(); </code> con la lista completa de los clientes.
-              Para esto utiliza el metodo filter que por medio de una expresión lamba permite hacer filtro a un array. <br/>
-              <code>
-                this.clientes.filter(cliente =>
-                  cliente.nombreCompleto.toLocaleLowerCase().indexOf(filterBy) !== -1
-                  ||
-                  cliente.telefono.toLocaleLowerCase().indexOf(filterBy) !== -1
-              );</code>
-
-              <hr/>
-
-              <div id="settings-object-filtertable" class="div_github"></div>
-
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header" id="headingTwo">
-            <h2 class="mb-0">
-              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Collapsible Group Item #2
-              </button>
-            </h2>
-          </div>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-            <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header" id="headingThree">
-            <h2 class="mb-0">
-              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Collapsible Group Item #3
-              </button>
-            </h2>
-          </div>
-          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-            <div class="card-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-   /////////////
-
- 
-
-
-  
-
-    
+    <!--
     <hr>
     <h2>NgBootstrap + Modales + Eventos</h2>
     <div id="settings-object-modals" class="div_github"></div>
 
-    <hr>
-    <h2>Formularios Reactivos y validación </h2>
-    <div id="settings-object-reactive" class="div_github"></div>
 
     <hr>
     <h2>Seguridad de las Rutas => Guardas</h2>
@@ -170,7 +70,7 @@
     <h1>Publicar en Azure desde Visual Studio Code</h1>
     Instalar Extensión - Azure App Service
     <a href="https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-3.0">Tutorial</a>
-    
+    -->
   </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -197,24 +97,7 @@
       ]
     });
 
-    githubEmbed('#settings-object-reactive', {
-    	"owner": "borisgr04",
-        "repo": "NgNetCoreCreditos",
-        "ref": "master",
-    	"embed": [
-        {
-    		"path": "NgNetCore/ClientApp/src/app/creditos/credito-register/credito-register.component.html",
-    	  },
-       {
-    		"path": "NgNetCore/ClientApp/src/app/creditos/credito-register/credito-register.component.ts"
-    	 },
-       {
-        "type" :  "htmlpage" ,
-    		"label":"preview",
-        "url":"https://localhost:44390/upload-file"
-    	  }
-      ]
-    });
+    
 
     githubEmbed('#settings-object-modals', {
     	"owner": "borisgr04",
@@ -252,30 +135,7 @@
     });
 
 
-    githubEmbed('#settings-object-filtertable', {
-    	"owner": "borisgr04",
-        "repo": "NgNetCoreCreditos",
-        "ref": "master",
-    	"embed": [
-        {
-            "label":"Controllers/ClienteController.cs",
-            "path":"NgNetCore/Controllers/ClienteController.cs"
-        },
-        {
-        "label":"cliente-consulta.component.html",
-    		"path": "NgNetCore/ClientApp/src/app/clientes/consulta/cliente-consulta.component.html"
-    	  },
-       {
-        "label":"cliente-consulta.component.ts",
-    		"path": "NgNetCore/ClientApp/src/app/clientes/consulta/cliente-consulta.component.ts"
-    	 },
-       {
-        "type" :  "htmlpage" ,
-    		"label":"preview",
-        "url":"https://localhost:44390/upload-file"
-    	  }
-      ]
-    });
+    
 
   </script>
 </html>
