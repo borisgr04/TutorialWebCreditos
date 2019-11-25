@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/b379b036-ba3e-4fef-91ec-b1bf0fcffad9/resourceGroups/Default-ApplicationInsights-EastUS/providers/Microsoft.Web/sites/byatutoriales",
+    "appService.deploySubpath": "publish"
+}
