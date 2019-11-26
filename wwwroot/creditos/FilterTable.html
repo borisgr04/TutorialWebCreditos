@@ -31,13 +31,13 @@
         <h1>Filtro de Datos con .Net Core web Api y Angular 8 (Pipe) </h1>
 
         <p>
-            para el filtro de datos se utilizara pipe, los pipes son filtros o funciones se colocan directamente en la vista para dar formato a un dato que se esta visualizando.
+            Para el filtro de datos se utilizara pipe, los pipes son filtros o funciones se colocan directamente en la vista para dar formato a un dato que se esta visualizando.
             Los pipes tienen el siguiente formato:
         </p>
         <code class="language-javascript">{{dato a formatear | tipo de pipe a usar}}</code>
         <p>
             <br />
-            un ejemplo del uso de los pipes es el siguiente:<br /> <br />
+            Un ejemplo del uso de los pipes es el siguiente:<br /> <br />
             <strong>Pipe para number</strong><br />
             <code>{{ 3.14159265 | number: '3.1-2' }}</code><br />
             Indicamos que queremos 3 números antes de la coma y de 1 a 2 elementos tras la coma, lo cual imprimira: 003.14
@@ -52,47 +52,47 @@
         <p> <a href="https://codingpotions.com/angular-pipes"> Ver otros Pipes de angular </a></p><br />
         <p>
             <strong>Crear pipes personalizados.</strong><br />
-            para crear un pipe personalizado se debe ejecutar en angular CLI la siguiente linea de codigo<br />
+            Para crear un pipe personalizado se debe ejecutar en angular CLI la siguiente linea de código<br />
             <code>ng generate pipe</code><br /><br />
-            Se utilzara el Pipe para crear los filtros en una lista de datos. el metodo a programar recibirá una lista de datos y una cadena con el texto de filtrado.
-
+            Se utilzará el Pipe para crear los filtros en una lista de datos. el método a programar recibirá una lista de datos y una cadena con el texto de filtrado.
         </p>
         <p>
             <h4>Pasos para crear filtro con Pipe</h4><br />
-            para realizar el proceso del filtro es necesario crear el proyecto de Angular con dotnet<br /><br />
+            Para realizar el proceso del filtro es necesario crear el proyecto de Angular con dotnet<br /><br />
             <code>new angular -o  NgNetCoreCreditos</code><br /><br />
-            instalar los componentes de BootStrap a la aplicaion<br /><br />
+            Instalar los componentes de BootStrap a la aplicaion<br /><br />
             <code>npm install --save @ng-bootstrap/ng-bootstrap</code></br><br />
-            instalamos el paquete de EntityFramework puede buscar el nuget que se amolde a su version.</br><br />
-            <code>dotnet add package Microsoft.EntityFrameworkCore --version 3.0.1</code>
-            </br><br />
-            <b>Paso 1: Crear el pipe</b><br />
-            <code> ng g pipe pipes/filtroCliente --module=app</code><br />
-            Esta instrucción creará el sigueinte código<br /><br />
+            Instalamos el paquete de EntityFramework puede buscar el nuget que se amolde a su version.</br><br />
             <code>
-                import { Pipe, PipeTransform } from '@angular/core';<br /><br />
+                dotnet add package Microsoft.EntityFrameworkCore --version 3.0.0/code>
+                </br><br />
+                <b>Paso 1: Crear el pipe</b><br />
+                <code> ng g pipe pipes/filtroCliente --module=app</code><br />
+                Esta instrucción creará el sigueinte código<br /><br />
+                <code>
+                    import { Pipe, PipeTransform } from '@angular/core';<br /><br />
 
-                @Pipe({<br />
-                name: 'filtro'<br />
-                })<br />
-                export class FiltroCleintePipe implements PipeTransform {<br /><br />
+                    @Pipe({<br />
+                    name: 'filtro'<br />
+                    })<br />
+                    export class FiltroCleintePipe implements PipeTransform {<br /><br />
 
-                transform(value: any, ...arg: any[]): any {<br />
+                    transform(value: any, ...arg: any[]): any {<br />
 
 
-                }<br />
+                    }<br />
 
-                }<br />
+                    }<br />
 
-            </code>
+                </code>
         </p>
         <br />
         <b>Paso 2: Crear el Modelo de los datos y Programar el método transform del filtroClientePipe</b><br />
         <p>
-            crear el modelo de los datos a ser filtrados en el frontEnd.<br /> <br />
+            Crear el modelo de los datos a ser filtrados en el frontEnd.<br /> <br />
             <code>ng g class clientes/clienteViewModel</code> <br /> <br />
             El método transform sera utilizado para realizar el filtrado de los datos. se realizaran cambios a los nombres de los parámetros para facilitar su compresión al programador
-            los parametros a utilizar seran:
+            los parámetros a utilizar seran:
             <ul>
                 <li>
                     <b>values: </b>representa los datos que son recibidos por el filtro en nuestro caso se recibirá una array de cliente por lo tanto se cambiará el nombre paramtero del array y el tipo de dato esperado de la siguente forma clientes: ClienteViewModel[].
@@ -104,7 +104,7 @@
                 </li>
             </ul>
         <p>
-            El codigo para que se realice el filtrado es el siguiente.
+            El código para que se realice el filtrado es el siguiente.
         </p>
         <code>
             if (searchText == null) return clientes;<br />
@@ -116,17 +116,15 @@
         </code><br /><br />
 
         <p>
-            Explicacion del código: Para el filtrado se utilizaran dos métodos propios de los array  filter e Indexof.
+            Explicación del código: Para el filtrado se utilizaran dos métodos propios de los array  filter e Indexof.
             <a href=" https://www.tutorialspoint.com/typescript/typescript_arrays.htm">
-                para ver mas métodos de los arrays
+                Para ver mas métodos de los arrays
             </a>
             <ul>
                 <li>
                     El método <b>filter() </b>crea un nuevo array con todos los elementos que cumplan la condición implementada por la función dada.
                     Ejemplo:<br />
                     <code>
-
-
                         <br />const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
 
                         <br /> const result = words.filter(word => word.length > 6);
@@ -148,24 +146,24 @@
             </ul>
 
         <p>
-            El codigo del pipe/filtro es es siguiente:
+            El código del pipe/filtro es es siguiente:
 
             <div id="pipe" class="div_github"></div>
         </p>
 
         <b>Paso 3: Programar componente en el que se realizá el filtrado </b><br />
         <p>
-            En este tutorial se incluira el envio de errores a través de un modal (component Angular Bootstrap) , para sustituir los alert().Por este motivo, antes de crear el componente y el servico que visualizará los datos, se creará el servicio HandleError y el componente AlertModal que ayudará a visualizar los errores. <br /><br />
+            En este tutorial se incluirá el envío de errores a través de un modal (component Angular Bootstrap) , para sustituir los alert().Por este motivo, antes de crear el componente y el servico que visualizará los datos, se creará el servicio HandleError y el componente AlertModal que ayudará a visualizar los errores. <br /><br />
             <code>ng g service @base/services/HandleError</code> <br />
             <code>ng g c @base/modals/AlertModal --module=app</code><br /><br />
-           
 
-             <div id="settings-ModalError" class="div_github"></div>
 
-            Ahora se creara el componente necesarios para el Visualizar los Datos y el servicio que consultará la APi<br /><br />
+            <div id="settings-ModalError" class="div_github"></div>
+
+            Ahora se creará el componente necesario para el Visualizar los Datos y el servicio que consultará la Api<br /><br />
             <code>ng g c clientes/consulta/clienteConsulta --module=app</code><br />
             <code>ng g service services/cliente</code><br />
-             <div id="settings-object-filtertable" class="div_github"></div>
+            <div id="settings-object-filtertable" class="div_github"></div>
 
         <p>
             <b>Paso 4: Programar Web api en Net core</b><br />
@@ -188,104 +186,104 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.min.js"></script>
+    <script src="github-embed.min.js"></script>
+    <script>
+
+        githubEmbed('#Pipe', {
+            "owner": "borisgr04",
+            "repo": "NgNetCoreCreditos",
+            "ref": "master",
+            "embed": [
+                {
+                    "label": "clientes/models/cliente-view-model.ts",
+                    "path": "NgNetCore/ClientApp/src/app/clientes/models/cliente-view-model.ts"
+                },
+                {
+                    "label": "/pipes/filtro-cliente.pipe.ts",
+                    "path": "NgNetCore/ClientApp/src/app/pipes/filtro-cliente.pipe.ts"
+                }
+
+            ]
+        });
+
+
+
+        githubEmbed('#settings-apiclienteControler', {
+            "owner": "borisgr04",
+            "repo": "NgNetCoreCreditos",
+            "ref": "master",
+            "embed": [
+                {
+                    "label": "/Models/Cliente.cs",
+                    "path": "NgNetCore/Models/Cliente.cs"
+                },
+                {
+                    "label": "Data/ApplicationDbContext.cs",
+                    "path": "NgNetCore/Data/ApplicationDbContext.cs"
+                },
+                {
+                    "label": "ViewModels/ClienteViewModel.cs",
+                    "path": "NgNetCore/ViewModels/ClienteViewModel.cs"
+                },
+
+                {
+                    "label": "Controllers/ClienteController.cs",
+                    "path": "NgNetCore/Controllers/ClienteController.cs"
+                }
+
+            ]
+        });
+
+        githubEmbed('#settings-ModalError', {
+            "owner": "borisgr04",
+            "repo": "NgNetCoreCreditos",
+            "ref": "master",
+            "embed": [
+                {
+                    "label": "alert-modal.component.html",
+                    "path": "NgNetCore/ClientApp/src/app/%40base/modals/alert-modal/alert-modal.component.html"
+                },
+                {
+                    "label": "alert-modal/alert-modal.component.ts",
+                    "path": "NgNetCore/ClientApp/src/app/%40base/modals/alert-modal/alert-modal.component.ts"
+                },
+                {
+                    "label": "services/handle-error.service.ts",
+                    "path": "NgNetCore/ClientApp/src/app/%40base/services/handle-error.service.ts"
+                }
+
+            ]
+        });
+
+        githubEmbed('#settings-object-filtertable', {
+            "owner": "borisgr04",
+            "repo": "NgNetCoreCreditos",
+            "ref": "master",
+            "embed": [
+
+
+                {
+                    "label": "clientes/consulta/cliente-consulta.component.html",
+                    "path": "NgNetCore/ClientApp/src/app/clientes/consulta/cliente-consulta.component.html"
+                },
+                {
+                    "label": "clientes/consulta/cliente-consulta.component.ts",
+                    "path": "NgNetCore/ClientApp/src/app/clientes/consulta/cliente-consulta.component.ts"
+                },
+                {
+                    "label": "services/cliente.service.ts",
+                    "path": "NgNetCore/ClientApp/src/app/services/cliente.service.ts"
+                },
+                {
+                    "type": "htmlpage",
+                    "label": "preview",
+                    "url": "https://bya01creditos.azurewebsites.net/clientes-consulta"
+                }
+            ]
+        });
+
+    </script>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.min.js"></script>
-<script src="github-embed.min.js"></script>
-<script>
-
-    githubEmbed('#Pipe', {
-        "owner": "borisgr04",
-        "repo": "NgNetCoreCreditos",
-        "ref": "master",
-        "embed": [
-            {
-                "label": "clientes/models/cliente-view-model.ts",
-                "path": "NgNetCore/ClientApp/src/app/clientes/models/cliente-view-model.ts"
-            },
-            {
-                "label": "/pipes/filtro-cliente.pipe.ts",
-                "path": "NgNetCore/ClientApp/src/app/pipes/filtro-cliente.pipe.ts"
-            }
-
-        ]
-    });
-
-
-
-    githubEmbed('#settings-apiclienteControler', {
-        "owner": "borisgr04",
-        "repo": "NgNetCoreCreditos",
-        "ref": "master",
-        "embed": [
-            {
-                "label": "/Models/Cliente.cs",
-                "path": "NgNetCore/Models/Cliente.cs"
-            },
-            {
-                "label": "Data/ApplicationDbContext.cs",
-                "path": "NgNetCore/Data/ApplicationDbContext.cs"
-            },
-            {
-                "label": "ViewModels/ClienteViewModel.cs",
-                "path": "NgNetCore/ViewModels/ClienteViewModel.cs"
-            },
-
-            {
-                "label": "Controllers/ClienteController.cs",
-                "path": "NgNetCore/Controllers/ClienteController.cs"
-            }
-
-        ]
-    });
-
-    githubEmbed('#settings-ModalError', {
-        "owner": "borisgr04",
-        "repo": "NgNetCoreCreditos",
-        "ref": "master",
-        "embed": [
-            {
-                "label": "alert-modal.component.html",
-                "path": "NgNetCore/ClientApp/src/app/%40base/modals/alert-modal/alert-modal.component.html"
-            },
-            {
-                "label": "alert-modal/alert-modal.component.ts",
-                "path": "NgNetCore/ClientApp/src/app/%40base/modals/alert-modal/alert-modal.component.ts"
-            },
-            {
-                "label": "services/handle-error.service.ts",
-                "path": "NgNetCore/ClientApp/src/app/%40base/services/handle-error.service.ts"
-            }
-
-        ]
-    });
-
-    githubEmbed('#settings-object-filtertable', {
-        "owner": "borisgr04",
-        "repo": "NgNetCoreCreditos",
-        "ref": "master",
-        "embed": [
-
-
-            {
-                "label": "clientes/consulta/cliente-consulta.component.html",
-                "path": "NgNetCore/ClientApp/src/app/clientes/consulta/cliente-consulta.component.html"
-            },
-            {
-                "label": "clientes/consulta/cliente-consulta.component.ts",
-                "path": "NgNetCore/ClientApp/src/app/clientes/consulta/cliente-consulta.component.ts"
-            },
-            {
-                "label": "services/cliente.service.ts",
-                "path": "NgNetCore/ClientApp/src/app/services/cliente.service.ts"
-            },
-            {
-                "type": "htmlpage",
-                "label": "preview",
-                "url": "https://bya01creditos.azurewebsites.net/clientes-consulta"
-            }
-        ]
-    });
-
-</script>
-
 </html>
