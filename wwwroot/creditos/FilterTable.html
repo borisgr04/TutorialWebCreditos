@@ -60,10 +60,14 @@
         <p>
             <h4>Pasos para crear filtro con Pipe</h4><br />
             para realizar el proceso del filtro es necesario crear el proyecto de Angular con dotnet<br /><br />
-            <code>new angular -o  NgNetCoreCreditos</code>
+            <code>new angular -o  NgNetCoreCreditos</code><br /><br />
+            instalar los componentes de BootStrap a la aplicaion<br /><br />
+            <code>npm install --save @ng-bootstrap/ng-bootstrap</code></br><br />
+            instalamos el paquete de EntityFramework puede buscar el nuget que se amolde a su version.</br><br />
+            <code>dotnet add package Microsoft.EntityFrameworkCore --version 3.0.1</code>
             </br><br />
             <b>Paso 1: Crear el pipe</b><br />
-               <code> ng g pipe pipes/filtroCliente --module=app</code><br />
+            <code> ng g pipe pipes/filtroCliente --module=app</code><br />
             Esta instrucción creará el sigueinte código<br /><br />
             <code>
                 import { Pipe, PipeTransform } from '@angular/core';<br /><br />
@@ -150,11 +154,18 @@
         </p>
 
         <b>Paso 3: Programar componente en el que se realizá el filtrado </b><br />
-        <p>Para crear el componete<br /><br />
-        <code>ClientApp>ng g c clientes/consulta/clienteConsulta --module=app</code>
-        <br /><br />
-        </p>
-        <div id="settings-object-filtertable" class="div_github"></div>
+        <p>
+            En este tutorial se incluira el envio de errores a través de un modal (component Angular Bootstrap) , para sustituir los alert().Por este motivo, antes de crear el componente y el servico que visualizará los datos, se creará el servicio HandleError y el componente AlertModal que ayudará a visualizar los errores. <br /><br />
+            <code>ng g service @base/services/HandleError</code> <br />
+            <code>ng g c @base/modals/AlertModal --module=app</code><br /><br />
+           
+
+             <div id="settings-ModalError" class="div_github"></div>
+
+            Ahora se creara el componente necesarios para el Visualizar los Datos y el servicio que consultará la APi<br /><br />
+            <code>ng g c clientes/consulta/clienteConsulta --module=app</code><br />
+            <code>ng g service services/cliente</code><br />
+             <div id="settings-object-filtertable" class="div_github"></div>
 
         <p>
             <b>Paso 4: Programar Web api en Net core</b><br />
@@ -163,19 +174,19 @@
 
 
 
-        </div>
+    </div>
 
 
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-                crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-                crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-                crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.min.js"></script>
@@ -198,28 +209,52 @@
 
         ]
     });
+
+
+
     githubEmbed('#settings-apiclienteControler', {
         "owner": "borisgr04",
         "repo": "NgNetCoreCreditos",
         "ref": "master",
         "embed": [
             {
-                "label": "Data/ApplicationDbContext.cs",
-                "path": "NgNetCore/Data/ApplicationDbContext.cs"
-            },
-            {
                 "label": "/Models/Cliente.cs",
                 "path": "NgNetCore/Models/Cliente.cs"
             },
             {
-                "label": "Controllers/ClienteController.cs",
-                "path": "NgNetCore/Controllers/ClienteController.cs"
+                "label": "Data/ApplicationDbContext.cs",
+                "path": "NgNetCore/Data/ApplicationDbContext.cs"
             },
             {
                 "label": "ViewModels/ClienteViewModel.cs",
-                "path":"NgNetCore/ViewModels/ClienteViewModel.cs"
+                "path": "NgNetCore/ViewModels/ClienteViewModel.cs"
+            },
+
+            {
+                "label": "Controllers/ClienteController.cs",
+                "path": "NgNetCore/Controllers/ClienteController.cs"
             }
 
+        ]
+    });
+
+    githubEmbed('#settings-ModalError', {
+        "owner": "borisgr04",
+        "repo": "NgNetCoreCreditos",
+        "ref": "master",
+        "embed": [
+            {
+                "label": "alert-modal.component.html",
+                "path": "NgNetCore/ClientApp/src/app/%40base/modals/alert-modal/alert-modal.component.html"
+            },
+            {
+                "label": "alert-modal/alert-modal.component.ts",
+                "path": "NgNetCore/ClientApp/src/app/%40base/modals/alert-modal/alert-modal.component.ts"
+            },
+            {
+                "label": "services/handle-error.service.ts",
+                "path": "NgNetCore/ClientApp/src/app/%40base/services/handle-error.service.ts"
+            }
 
         ]
     });
@@ -238,6 +273,10 @@
             {
                 "label": "clientes/consulta/cliente-consulta.component.ts",
                 "path": "NgNetCore/ClientApp/src/app/clientes/consulta/cliente-consulta.component.ts"
+            },
+            {
+                "label": "services/cliente.service.ts",
+                "path": "NgNetCore/ClientApp/src/app/services/cliente.service.ts"
             },
             {
                 "type": "htmlpage",
