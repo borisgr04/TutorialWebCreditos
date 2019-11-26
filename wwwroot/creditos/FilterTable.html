@@ -1,16 +1,13 @@
-<html>
+﻿<html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="github-embed.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
-        body {
-            font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
-            font-size: 12px;
-        }
+
 
         .div_github {
             height: 500px;
@@ -21,79 +18,193 @@
 </head>
 
 <body>
-        <div class="container">
-    
+    <div class="container">
+
         <!-- As a heading -->
-       <nav class="navbar navbar-light bg-light">
-        <span class="navbar-brand mb-0 h1">Programación Web 2019 - II  </span>
-        
-        <a class="nav-link" href="index.html">Inicio</a>
-       </nav>
-    
-       <br/>
-       <h1>Filtro de datos de una Tabla con cuadro de Texto </h1>
-       
-       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand mb-0 h1">Programación Web 2019 - II  </span>
+
+            <a class="nav-link" href="index.html">Inicio</a>
+        </nav>
+
+        <br />
+        <h1>Filtro de Datos con .Net Core web Api y Angular 8  </h1>
+        <p>
+            para el filtro de datos se utilizara pipe, los pipes son filtros o funciones se colocan directamente en la vista para el dar formato a un dato que se esta visualizando. <br />
+            Los pipes tienen el siguiente formato:
+        </p>
+        <code>{{dato a formatear | tipo de pipe a usar}}</code>
+        <p>
+            <br />
+            un ejemplo del uso de los pipes es el siguiente:<br /> <br />
+            <strong>Pipe para number</strong><br />
+            <code>{{ 3.14159265 | number: '3.1-2' }}</code><br />
+            Indicamos que queremos 3 números antes de la coma y de 1 a 2 elementos tras la coma, lo cual imprimira: 003.14
+
+        </p>
+        <p>
+            <br />
+            <strong>Pipe para texto</strong><br />
+            <code>{{ 'BBBBB' | lowercase }}</code><br />
+            Indicamos que queremos que imprima el texto en minuscula, lo que imprimirá será: bbbbb
+        </p>
+        <p> <a href="https://codingpotions.com/angular-pipes"> Ver otros Pipes de angular </a></p><br />
+        <p>
+            <strong>Crear pipes personalizados.</strong><br />
+            para crear un pipe personalizado  debe ejecutar en angular CLI la siguiente linea de codigo<br />
+            <code>ng generate pipe</code><br /><br />
+            Se utilzara el Pipe para crear los filtros en una lista de datos la cual recibirá una lista de datos y los filtrara de acuerdo a la información digitada en el texto.
+
+        </p>
+        <p>
+            <h4>Pasos para crear filtro con Pipe</h4><br />
+            <b>Paso 1: Crear el pipe</b><br />
+            <code> ng g pipe pipes/filtro</code><br />
+            Esta instrucción creará el sigueinte código<br /><br />
+            <code>
+                import { Pipe, PipeTransform } from '@angular/core';<br /><br />
+
+                @Pipe({<br />
+                name: 'filtro'<br />
+                })<br />
+                export class FiltroPipe implements PipeTransform {<br /><br />
+
+                transform(value: any, ...arg: any[]): any {<br />
+
+
+                }<br />
+
+                }<br />
+
+            </code>
+        </p>
+        <br />
+        <b>Paso 2: Programar el método tranform para que filtre</b><br />
+        <p>
+            El método transform sera utilizado para realizar el filtro, es decir, en este método se programará la funcion del filtrado.
+            los parametros a utilizar seran:
+            <ul>
+                <li>
+                    <b>values: </b>representa los datos que son recibidos por el filtro en nuestro caso se recibirá una array de cliente.
+
+                </li>
+
+                <li>
+                    <b> arg:</b>tendrá la cadena que contiene el valor a buscar en la lista la cual se pedirá desde la vista en un input.
+                </li>
+            </ul>
+            <code>
+                clientes.filter(cliente =>
+                cliente.nombreCompleto.toLocaleLowerCase().indexOf(filterBy) !== -1
+                ||
+                cliente.telefono.toLocaleLowerCase().indexOf(filterBy) !== -1
+            </code><br /><br />
+
+        <p>
+            Para el filtrado se utilizaran dos métodos propios del array  filter e Indexof.
+            <a href=" https://www.tutorialspoint.com/typescript/typescript_arrays.htm">
+                para ver mas metodos
+            </a>
+            <ul>
+                <li>
+                    El método <b>filter() </b>crea un nuevo array con todos los elementos que cumplan la condición implementada por la función dada.
+                    Ejemplo:<br />
+                    <code>
+
+
+                        <br />const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+                        <br /> const result = words.filter(word => word.length > 6);
+
+                        <br />console.log(result);
+                    </code>
+                    <br />// La salida del filtro sera: Array ["exuberant", "destruction", "present”]<br /><br />
+                </li>
+                <li>
+                    El método <b>indexOf()</b> retorna el primer índice en el que se puede encontrar un elemento dado en el array, ó retorna -1 si el elemento no esté presente.<br />
+                    <code>
+                        var array = [2, 9, 9];<br />
+                        array.indexOf(2);     // 0<br />
+                        array.indexOf(7);     // -1<br />
+
+
+                    </code>
+                </li>
+            </ul>
+
+        <p>
+
+
+        </p>
+
+        <b>Paso 2: Programar componente</b><br />
+
+        <h1>Filtro de datos de una Tabla con cuadro de Texto </h1>
+        <p>
+            <b>Paso 2: modificar el pipe para que to</b>
+        </p>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
             <div class="card-body">
-                <h5>Controllers/ClienteController.cs</h5><br/>
+                <h5>Controllers/ClienteController.cs</h5><br />
                 Api que tiene implemendato las operaciones Get para consultar todos los registros de clientes y la consulta de clientes por identificación
-                <br/>
-                <hr/>
-              <h5>cliente-consulta.component.html</h5><br/>
-              Como ejemplo para el filtro se consultará la Api de Clientes y se mostrará en un tabla con NgFor. <br/>
-              <code>
-              &lt;table class="table table-striped" *ngIf='clientes && clientes.length'&gt;
-              </code>
-               <br/>
-              Este componente permitirá filtrar los datos de la tabla  por Nombre y por Teléfono por medio del cuando de texto. <br/>
-              <code>
-                  &lt;input [(ngModel)]="listFilter" type="text" class="form-control" id="filterInput" placeholder="Type to filter"&gt;
-              </code> 
-              <br/>
-              La tabla visualiza los datos de una lista filtrada de clientes. Cada fila tiene habilitado el evento click en cual invoca al método seleccinar. 
-              Esto se utilizará más adelante cuando el usuario pueda seleccionar el usuario que va a realizar el crédito. 
-              <br/>
-              <code>
-                  &lt;tr *ngFor="let cliente of filteredClients; index as i" (click)="seleccionar(cliente)"&gt;
-              </code>  
-               <hr/>
-              <h5>cliente-consulta.component.ts</h5><br/>
-              En el componente se declaran las objetos clientes y clientes filtrados. al iniciar el componente
-              <code>
-                  ngOnInit()
-              </code> se descargan los datos de la Api <code>ClienteService</code> <br/>
-              El listFilter es un propiedad que encapsula a la variable  <code> _listFilter </code>. Este permite que al digitar datos automáticamente 
-              el <code>NgModel</code> invoque al set de la variable y este internamente invoque al método <code>   doFilter(filterBy: string): ClienteViewModel[] </code>
-              Este método compará el valor digitado por el usuario convertido en minúscula <code> filterBy = filterBy.toLocaleLowerCase(); </code> con la lista completa de los clientes.
-              Para esto utiliza el metodo filter que por medio de una expresión lamba permite hacer filtro a un array. <br/>
-              <code>
-                this.clientes.filter(cliente =>
-                  cliente.nombreCompleto.toLocaleLowerCase().indexOf(filterBy) !== -1
-                  ||
-                  cliente.telefono.toLocaleLowerCase().indexOf(filterBy) !== -1
-              );</code>
+                <br />
+                <hr />
+                <h5>cliente-consulta.component.html</h5><br />
+                Como ejemplo para el filtro se consultará la Api de Clientes y se mostrará en un tabla con NgFor. <br />
+                <code>
+                    &lt;table class="table table-striped" *ngIf='clientes && clientes.length'&gt;
+                </code>
+                <br />
+                Este componente permitirá filtrar los datos de la tabla  por Nombre y por Teléfono por medio del cuando de texto. <br />
+                <code>
+                    &lt;input [(ngModel)]="listFilter" type="text" class="form-control" id="filterInput" placeholder="Type to filter"&gt;
+                </code>
+                <br />
+                La tabla visualiza los datos de una lista filtrada de clientes. Cada fila tiene habilitado el evento click en cual invoca al método seleccinar.
+                Esto se utilizará más adelante cuando el usuario pueda seleccionar el usuario que va a realizar el crédito.
+                <br />
+                <code>
+                    &lt;tr *ngFor="let cliente of filteredClients; index as i" (click)="seleccionar(cliente)"&gt;
+                </code>
+                <hr />
+                <h5>cliente-consulta.component.ts</h5><br />
+                En el componente se declaran las objetos clientes y clientes filtrados. al iniciar el componente
+                <code>
+                    ngOnInit()
+                </code> se descargan los datos de la Api <code>ClienteService</code> <br />
+                El listFilter es un propiedad que encapsula a la variable  <code> _listFilter </code>. Este permite que al digitar datos automáticamente
+                el <code>NgModel</code> invoque al set de la variable y este internamente invoque al método <code>   doFilter(filterBy: string): ClienteViewModel[] </code>
+                Este método compará el valor digitado por el usuario convertido en minúscula <code> filterBy = filterBy.toLocaleLowerCase(); </code> con la lista completa de los clientes.
+                Para esto utiliza el metodo filter que por medio de una expresión lamba permite hacer filtro a un array. <br />
+                <code>
+                    this.clientes.filter(cliente =>
+                    cliente.nombreCompleto.toLocaleLowerCase().indexOf(filterBy) !== -1
+                    ||
+                    cliente.telefono.toLocaleLowerCase().indexOf(filterBy) !== -1
+                    );
+                </code>
 
-              <hr/>
+                <hr />
 
-              <div id="settings-object-filtertable" class="div_github"></div>
+                <div id="settings-object-filtertable" class="div_github"></div>
 
             </div>
-          </div>
-
-
         </div>
+
+
+    </div>
 
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.min.js"></script>
@@ -101,29 +212,29 @@
 <script>
 
 
-githubEmbed('#settings-object-filtertable', {
-    	"owner": "borisgr04",
+    githubEmbed('#settings-object-filtertable', {
+        "owner": "borisgr04",
         "repo": "NgNetCoreCreditos",
         "ref": "master",
-    	"embed": [
-        {
-            "label":"Controllers/ClienteController.cs",
-            "path":"NgNetCore/Controllers/ClienteController.cs"
-        },
-        {
-        "label":"cliente-consulta.component.html",
-    		"path": "NgNetCore/ClientApp/src/app/clientes/consulta/cliente-consulta.component.html"
-    	  },
-       {
-        "label":"cliente-consulta.component.ts",
-    		"path": "NgNetCore/ClientApp/src/app/clientes/consulta/cliente-consulta.component.ts"
-    	 },
-       {
-        "type" :  "htmlpage" ,
-    		"label":"preview",
-        "url":"https://localhost:44390/upload-file"
-    	  }
-      ]
+        "embed": [
+            {
+                "label": "Controllers/ClienteController.cs",
+                "path": "NgNetCore/Controllers/ClienteController.cs"
+            },
+            {
+                "label": "cliente-consulta.component.html",
+                "path": "NgNetCore/ClientApp/src/app/clientes/consulta/cliente-consulta.component.html"
+            },
+            {
+                "label": "cliente-consulta.component.ts",
+                "path": "NgNetCore/ClientApp/src/app/clientes/consulta/cliente-consulta.component.ts"
+            },
+            {
+                "type": "htmlpage",
+                "label": "preview",
+                "url": "https://localhost:44390/upload-file"
+            }
+        ]
     });
 
 </script>
