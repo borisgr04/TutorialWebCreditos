@@ -1,16 +1,13 @@
-<html>
+﻿<html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="github-embed.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
-        body {
-            font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
-            font-size: 12px;
-        }
+
 
         .div_github {
             height: 500px;
@@ -21,49 +18,56 @@
 </head>
 
 <body>
-        <div class="container">
-    
+    <div class="container">
+
         <!-- As a heading -->
-       <nav class="navbar navbar-light bg-light">
-        <span class="navbar-brand mb-0 h1">Programación Web 2019 - II  </span>
-        
-        <a class="nav-link" href="index.html">Inicio</a>
-       </nav>
-    
-       <br/>
-       <h1>Formularios Reactivos y Validaciones en el FrontEnd </h1>
-       
-       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand mb-0 h1">Programación Web 2019 - II  </span>
+
+            <a class="nav-link" href="index.html">Inicio</a>
+        </nav>
+
+        <br />
+        <h1>Formularios Reactivos y Validaciones en el FrontEnd  y Backend Angular y Web api net core</h1>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
             <div class="card-body">
-              
-              <code>
-                  &lt;tr *ngFor="let cliente of filteredClients; index as i" (click)="seleccionar(cliente)"&gt;
-              </code>  
-             
+                <p>
+                    Angular 2 (en adelante) soporta la creación de formularios de dos tipos diferentes, mediante templates (como lo hacíamos con AngularJS)
+                    o de forma reactiva. Cuando hablamos de formularios reactivos no usamos la directiva ngModel, sino que creamos modelos con los que Angular
+                    creará los formularios, manteniendo la lógica de nuestra aplicación web en una sola parte, haciendo que el código sea más fácil de testear
+                    y más fácil de mantener.  <a href="https://codingpotions.com/angular-formularios">Definición tomada de Codigo Potions</a>
+                </p>
+                <p> Este tutorial esta basado en el tutorial de <a href="https://jasonwatmore.com/post/2019/06/14/angular-8-reactive-forms-validation-example">Jason Watmores's</a></p>
+                <code>
+                    &lt;tr *ngFor="let cliente of filteredClients; index as i" (click)="seleccionar(cliente)"&gt;
+                </code>
 
-              <hr/>
 
-              <hr>
-            
-            <div id="settings-object-reactive" class="div_github"></div>
+                <hr />
 
+                <hr>
+
+                <div id="settings-object-reactive" class="div_github"></div>
+
+                <div id="settings-backend" class="div_github"></div>
             </div>
-          </div>
-
-
         </div>
+
+
+    </div>
 
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.min.js"></script>
@@ -71,25 +75,55 @@
 <script>
 
 
-    githubEmbed('#settings-object-reactive', {
-    	"owner": "borisgr04",
+    githubEmbed('#settings-Backend', {
+        "owner": "borisgr04",
         "repo": "NgNetCoreCreditos",
         "ref": "master",
-    	"embed": [
-          {
-             "label":"credito-register.component.html",
-    		"path": "NgNetCore/ClientApp/src/app/creditos/credito-register/credito-register.component.html",
-    	  },
-          {
-            "label":"credito-register.component.ts ",
-    		"path": "NgNetCore/ClientApp/src/app/creditos/credito-register/credito-register.component.ts"
-    	 },
-       {
-        "type" :  "htmlpage" ,
-    		"label":"preview",
-        "url":"https://localhost:44390/upload-file"
-    	  }
-      ]
+        "embed": [
+            {
+                "label": "ViewModels/CreditoRegisterRequest.cs",
+                "path": "NgNetCore/ViewModels/CreditoRegisterRequest.cs",
+            },
+            {
+                "label": "/Models/Credito.cs ",
+                "path": "NgNetCore/Models/Credito.cs"
+            },
+            {
+                "label": "Controllers/CreditoController.cs ",
+                "path": "NgNetCore/Controllers/CreditoController.cs"
+            }
+
+        ]
+    });
+
+    githubEmbed('#settings-object-reactive', {
+        "owner": "borisgr04",
+        "repo": "NgNetCoreCreditos",
+        "ref": "master",
+        "embed": [
+            {
+                "label": "credito-register-request.ts",
+                "path": "NgNetCore/ClientApp/src/app/creditos/models/credito-register-request.ts"
+            },
+            {
+                "label": "credito-register.component.html",
+                "path": "NgNetCore/ClientApp/src/app/creditos/credito-register/credito-register.component.html",
+            },
+
+            {
+                "label": "credito-register.component.ts ",
+                "path": "NgNetCore/ClientApp/src/app/creditos/credito-register/credito-register.component.ts"
+            },
+            {
+                "label": "credito.service.ts",
+                "path": "NgNetCore/ClientApp/src/app/services/credito.service.ts",
+            },
+            {
+                "type": "htmlpage",
+                "label": "preview",
+                "url": "https://bya01creditos.azurewebsites.net/credito-register"
+            }
+        ]
     });
 
 </script>
