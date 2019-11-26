@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 
 <head>
     <meta charset="utf-8">
@@ -7,10 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
-        body {
-            font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
-            font-size: 12px;
-        }
+        
 
         .div_github {
             height: 500px;
@@ -35,8 +32,14 @@
        
        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
             <div class="card-body">
-              
-              <code>
+                <p>
+                    Angular 2 (en adelante) soporta la creación de formularios de dos tipos diferentes, mediante templates (como lo hacíamos con AngularJS)
+                    o de forma reactiva. Cuando hablamos de formularios reactivos no usamos la directiva ngModel, sino que creamos modelos con los que Angular
+                    creará los formularios, manteniendo la lógica de nuestra aplicación web en una sola parte, haciendo que el código sea más fácil de testear
+                    y más fácil de mantener.  <a href="https://codingpotions.com/angular-formularios">Tomado de Codigo Potions</a>
+                </p>
+             
+                <code>
                   &lt;tr *ngFor="let cliente of filteredClients; index as i" (click)="seleccionar(cliente)"&gt;
               </code>  
              
