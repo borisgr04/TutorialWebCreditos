@@ -28,9 +28,10 @@
         </nav>
 
         <br />
-        <h1>Filtro de Datos con .Net Core web Api y Angular 8  </h1>
+        <h1>Filtro de Datos con .Net Core web Api y Angular 8 (Pipe) </h1>
+
         <p>
-            para el filtro de datos se utilizara pipe, los pipes son filtros o funciones se colocan directamente en la vista para el dar formato a un dato que se esta visualizando. <br />
+            para el filtro de datos se utilizara pipe, los pipes son filtros o funciones se colocan directamente en la vista para dar formato a un dato que se esta visualizando.
             Los pipes tienen el siguiente formato:
         </p>
         <code>{{dato a formatear | tipo de pipe a usar}}</code>
@@ -51,15 +52,18 @@
         <p> <a href="https://codingpotions.com/angular-pipes"> Ver otros Pipes de angular </a></p><br />
         <p>
             <strong>Crear pipes personalizados.</strong><br />
-            para crear un pipe personalizado  debe ejecutar en angular CLI la siguiente linea de codigo<br />
+            para crear un pipe personalizado se debe ejecutar en angular CLI la siguiente linea de codigo<br />
             <code>ng generate pipe</code><br /><br />
-            Se utilzara el Pipe para crear los filtros en una lista de datos la cual recibirá una lista de datos y los filtrara de acuerdo a la información digitada en el texto.
+            Se utilzara el Pipe para crear los filtros en una lista de datos. el metodo a programar recibirá una lista de datos y una cadena con el texto de filtrado.
 
         </p>
         <p>
             <h4>Pasos para crear filtro con Pipe</h4><br />
+            para realizar el proceso del filtro es necesario crear el proyecto de Angular con dotnet<br /><br />
+            <code>new angular -o  NgNetCoreCreditos</code>
+            </br><br />
             <b>Paso 1: Crear el pipe</b><br />
-            <code> ng g pipe pipes/filtro</code><br />
+               <code> ng g pipe pipes/filtroCliente --module=app</code><br />
             Esta instrucción creará el sigueinte código<br /><br />
             <code>
                 import { Pipe, PipeTransform } from '@angular/core';<br /><br />
@@ -67,7 +71,7 @@
                 @Pipe({<br />
                 name: 'filtro'<br />
                 })<br />
-                export class FiltroPipe implements PipeTransform {<br /><br />
+                export class FiltroCleintePipe implements PipeTransform {<br /><br />
 
                 transform(value: any, ...arg: any[]): any {<br />
 
@@ -79,31 +83,38 @@
             </code>
         </p>
         <br />
-        <b>Paso 2: Programar el método tranform para que filtre</b><br />
+        <b>Paso 2: Crear el Modelo de los datos y Programar el método transform del filtroClientePipe</b><br />
         <p>
-            El método transform sera utilizado para realizar el filtro, es decir, en este método se programará la funcion del filtrado.
+            crear el modelo de los datos a ser filtrados en el frontEnd.<br /> <br />
+            <code>ng g class clientes/clienteViewModel</code> <br /> <br />
+            El método transform sera utilizado para realizar el filtrado de los datos. se realizaran cambios a los nombres de los parámetros para facilitar su compresión al programador
             los parametros a utilizar seran:
             <ul>
                 <li>
-                    <b>values: </b>representa los datos que son recibidos por el filtro en nuestro caso se recibirá una array de cliente.
+                    <b>values: </b>representa los datos que son recibidos por el filtro en nuestro caso se recibirá una array de cliente por lo tanto se cambiará el nombre paramtero del array y el tipo de dato esperado de la siguente forma clientes: ClienteViewModel[].
 
                 </li>
 
                 <li>
-                    <b> arg:</b>tendrá la cadena que contiene el valor a buscar en la lista la cual se pedirá desde la vista en un input.
+                    <b> arg:</b>tendrá la cadena que contiene el valor a buscar en la lista la cual se pedirá desde la vista en un input. se cambiara el nombre del parametro a searchText: string
                 </li>
             </ul>
-            <code>
-                clientes.filter(cliente =>
-                cliente.nombreCompleto.toLocaleLowerCase().indexOf(filterBy) !== -1
-                ||
-                cliente.telefono.toLocaleLowerCase().indexOf(filterBy) !== -1
-            </code><br /><br />
+        <p>
+            El codigo para que se realice el filtrado es el siguiente.
+        </p>
+        <code>
+            if (searchText == null) return clientes;<br />
+            return clientes.filter(cliente =><br />
+            cliente.nombreCompleto.toLowerCase().indexOf(searchText.toLowerCase()) !== -1<br />
+            ||<br />
+            cliente.telefono.toLowerCase().indexOf(searchText.toLowerCase()) !== -1<br />
+            );
+        </code><br /><br />
 
         <p>
-            Para el filtrado se utilizaran dos métodos propios del array  filter e Indexof.
+            Explicacion del código: Para el filtrado se utilizaran dos métodos propios de los array  filter e Indexof.
             <a href=" https://www.tutorialspoint.com/typescript/typescript_arrays.htm">
-                para ver mas metodos
+                para ver mas métodos de los arrays
             </a>
             <ul>
                 <li>
@@ -133,100 +144,99 @@
             </ul>
 
         <p>
+            El codigo del pipe/filtro es es siguiente:
 
-
+            <div id="pipe" class="div_github"></div>
         </p>
 
-        <b>Paso 2: Programar componente</b><br />
+        <b>Paso 3: Programar componente en el que se realizá el filtrado </b><br />
+        <p>Para crear el componete<br /><br />
+        <code>ClientApp>ng g c clientes/consulta/clienteConsulta --module=app</code>
+        <br /><br />
+        </p>
+        <div id="settings-object-filtertable" class="div_github"></div>
 
-        <h1>Filtro de datos de una Tabla con cuadro de Texto </h1>
         <p>
-            <b>Paso 2: modificar el pipe para que to</b>
+            <b>Paso 4: Programar Web api en Net core</b><br />
+            <div id="settings-apiclienteControler" class="div_github"></div>
         </p>
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-            <div class="card-body">
-                <h5>Controllers/ClienteController.cs</h5><br />
-                Api que tiene implemendato las operaciones Get para consultar todos los registros de clientes y la consulta de clientes por identificación
-                <br />
-                <hr />
-                <h5>cliente-consulta.component.html</h5><br />
-                Como ejemplo para el filtro se consultará la Api de Clientes y se mostrará en un tabla con NgFor. <br />
-                <code>
-                    &lt;table class="table table-striped" *ngIf='clientes && clientes.length'&gt;
-                </code>
-                <br />
-                Este componente permitirá filtrar los datos de la tabla  por Nombre y por Teléfono por medio del cuando de texto. <br />
-                <code>
-                    &lt;input [(ngModel)]="listFilter" type="text" class="form-control" id="filterInput" placeholder="Type to filter"&gt;
-                </code>
-                <br />
-                La tabla visualiza los datos de una lista filtrada de clientes. Cada fila tiene habilitado el evento click en cual invoca al método seleccinar.
-                Esto se utilizará más adelante cuando el usuario pueda seleccionar el usuario que va a realizar el crédito.
-                <br />
-                <code>
-                    &lt;tr *ngFor="let cliente of filteredClients; index as i" (click)="seleccionar(cliente)"&gt;
-                </code>
-                <hr />
-                <h5>cliente-consulta.component.ts</h5><br />
-                En el componente se declaran las objetos clientes y clientes filtrados. al iniciar el componente
-                <code>
-                    ngOnInit()
-                </code> se descargan los datos de la Api <code>ClienteService</code> <br />
-                El listFilter es un propiedad que encapsula a la variable  <code> _listFilter </code>. Este permite que al digitar datos automáticamente
-                el <code>NgModel</code> invoque al set de la variable y este internamente invoque al método <code>   doFilter(filterBy: string): ClienteViewModel[] </code>
-                Este método compará el valor digitado por el usuario convertido en minúscula <code> filterBy = filterBy.toLocaleLowerCase(); </code> con la lista completa de los clientes.
-                Para esto utiliza el metodo filter que por medio de una expresión lamba permite hacer filtro a un array. <br />
-                <code>
-                    this.clientes.filter(cliente =>
-                    cliente.nombreCompleto.toLocaleLowerCase().indexOf(filterBy) !== -1
-                    ||
-                    cliente.telefono.toLocaleLowerCase().indexOf(filterBy) !== -1
-                    );
-                </code>
 
-                <hr />
 
-                <div id="settings-object-filtertable" class="div_github"></div>
 
-            </div>
         </div>
 
 
-    </div>
 
-
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+                crossorigin="anonymous"></script>
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.min.js"></script>
 <script src="github-embed.min.js"></script>
 <script>
 
+    githubEmbed('#Pipe', {
+        "owner": "borisgr04",
+        "repo": "NgNetCoreCreditos",
+        "ref": "master",
+        "embed": [
+            {
+                "label": "clientes/models/cliente-view-model.ts",
+                "path": "NgNetCore/ClientApp/src/app/clientes/models/cliente-view-model.ts"
+            },
+            {
+                "label": "/pipes/filtro-cliente.pipe.ts",
+                "path": "NgNetCore/ClientApp/src/app/pipes/filtro-cliente.pipe.ts"
+            }
+
+        ]
+    });
+    githubEmbed('#settings-apiclienteControler', {
+        "owner": "borisgr04",
+        "repo": "NgNetCoreCreditos",
+        "ref": "master",
+        "embed": [
+            {
+                "label": "Data/ApplicationDbContext.cs",
+                "path": "NgNetCore/Data/ApplicationDbContext.cs"
+            },
+            {
+                "label": "/Models/Cliente.cs",
+                "path": "NgNetCore/Models/Cliente.cs"
+            },
+            {
+                "label": "Controllers/ClienteController.cs",
+                "path": "NgNetCore/Controllers/ClienteController.cs"
+            },
+            {
+                "label": "ViewModels/ClienteViewModel.cs",
+                "path":"NgNetCore/ViewModels/ClienteViewModel.cs"
+            }
+
+
+        ]
+    });
 
     githubEmbed('#settings-object-filtertable', {
         "owner": "borisgr04",
         "repo": "NgNetCoreCreditos",
         "ref": "master",
         "embed": [
+
+
             {
-                "label": "Controllers/ClienteController.cs",
-                "path": "NgNetCore/Controllers/ClienteController.cs"
-            },
-            {
-                "label": "cliente-consulta.component.html",
+                "label": "clientes/consulta/cliente-consulta.component.html",
                 "path": "NgNetCore/ClientApp/src/app/clientes/consulta/cliente-consulta.component.html"
             },
             {
-                "label": "cliente-consulta.component.ts",
+                "label": "clientes/consulta/cliente-consulta.component.ts",
                 "path": "NgNetCore/ClientApp/src/app/clientes/consulta/cliente-consulta.component.ts"
             },
             {
