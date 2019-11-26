@@ -8,23 +8,23 @@
     ".NETCoreApp,Version=v3.0": []
   },
   "packageFolders": {
-    "C:\\Users\\LENOVO\\.nuget\\packages\\": {},
+    "C:\\Users\\user\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\LENOVO\\Documents\\ProgramacionWeb\\2019-II\\SitioTutorial\\TutorialWebCreditos\\github-embed-gh-pages.csproj",
+      "projectUniqueName": "C:\\Users\\user\\Source\\Repos\\TutorialWebCreditos\\github-embed-gh-pages.csproj",
       "projectName": "github-embed-gh-pages",
-      "projectPath": "C:\\Users\\LENOVO\\Documents\\ProgramacionWeb\\2019-II\\SitioTutorial\\TutorialWebCreditos\\github-embed-gh-pages.csproj",
-      "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\LENOVO\\Documents\\ProgramacionWeb\\2019-II\\SitioTutorial\\TutorialWebCreditos\\obj\\",
+      "projectPath": "C:\\Users\\user\\Source\\Repos\\TutorialWebCreditos\\github-embed-gh-pages.csproj",
+      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\user\\Source\\Repos\\TutorialWebCreditos\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
