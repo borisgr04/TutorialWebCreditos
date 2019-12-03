@@ -1,141 +1,168 @@
 ﻿<html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" href="github-embed.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
-    body {
-        font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
-        font-size: 12px;
-    }
-    .div_github {
-      height: 500px;
-      margin-bottom: 2rem;
-    }
-    
+        body {
+            font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
+            font-size: 12px;
+        }
+
+        .div_github {
+            height: 500px;
+            margin-bottom: 2rem;
+        }
     </style>
     <title>Ejemplo de Registro de  Crédito :: Tutorial Integral Angular DotNet Core </title>
-  </head>
-  <body>
+</head>
+<body>
     <div class="container">
-        
-    <!-- As a heading -->
-   <nav class="navbar navbar-light bg-light">
-    <span class="navbar-brand mb-0 h1">Programación Web 2019 - II</span>
-   </nav>
 
-   <br>
+        <!-- As a heading -->
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand mb-0 h1">Programación Web 2019 - II</span>
+        </nav>
 
-     <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-2">Tutorial Angular + Net Core</h1>
-          <p class="lead">
-            En este proyecto se implementará algunas opciones relacionadas con el registro sencillo de créditos asociados a clientes.
-                <ol>
-                <li><a href="FilterTable.html">Filtro de datos de una tabla por medio de un input text</a></li>
-                <li><a href="FormReactive.html"> Formularios Reactivos y validación </a> </li>
-                <li><a href="NgBootstrapModalAlert.html"> NgBootstrap + Modales + Alert Genérico y Control de Errores</a></li>
-                <li><a href="ModalsEvents.html"> Comunicación entre Componentes y eventos</a></li>
-                <li>Seguridad de las Rutas => Guardas</li>
-                <li>Publicar Aplicación Angular+NetCore</li>
-                <li>Publicar en Azure</li>
-                <li>Publicar en IIS</li>
-                <li>Creación de PDF de un Html </li>
-                <li>Cargar datos </li>
-                </ol>
+        <br>
 
-          </p>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-2">Tutorial Angular + Net Core</h1>
+                <p class="lead">
+                    En este proyecto se implementará algunas opciones relacionadas con el registro sencillo de créditos asociados a clientes.
+                    <ol>
+                        <li><a href="FilterTable.html">Filtro de datos de una tabla por medio de un input text</a></li>
+                        <li><a href="FormReactive.html"> Formularios Reactivos y validación </a> </li>
+                        <li><a href="NgBootstrapModalAlert.html"> NgBootstrap + Modales + Alert Genérico y Control de Errores</a></li>
+                        <li><a href="ModalsEvents.html"> Comunicación entre Componentes y eventos</a></li>
+                        <li>Publicar Aplicación Angular+NetCore</li>
+                        <li>Publicar en Azure</li>
+                        <li>Publicar en IIS</li>
+                        <li>Seguridad de las Rutas y Guardas</li>
+                        <li>Cargar Archivos al Servidor</li>
+                        <li>Generar Archivos Pdf</li>
+                    </ol>
+
+                </p>
+            </div>
         </div>
+
+
+        <hr>
+        <h3>Publicar Aplicación Angular+NetCore</h3>
+        <code>
+            dotnet publish -c Release -o ./publish
+        </code>
+        <hr>
+        <h3> Instalar IIS en Windows 10</h3>
+        <a href="https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/?view=aspnetcore-3.0">Tutorial</a>
+
+        <hr>
+        <h3>Publicar en Azure desde Visual Studio Code</h3>
+        Instalar Extensión - Azure App Service
+        <a href="https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-3.0">Tutorial</a>
+        <hr>
+        <h3> Seguridad y Path </h3>
+        <div id="settings-object-security" class="div_github"></div>
+        <h3> Seguridad y Navegación </h3>
+        <div id="settings-object-security-nav" class="div_github"></div>
+
+        <hr>
+        <h3> Cargar Archivos al servidor </h3>
+        <div id="settings-object-upload" class="div_github"></div>
+
+        <hr>
+        <h3> Generar Archivos Pdf </h3>
+        Instalar Nuget de JsReport. 
+        JsReport permite generar reportes en Pdp y en Excel
+        <code>
+            <PackageReference Include="jsreport.AspNetCore" Version="2.0.2" />
+            <PackageReference Include="jsreport.Local" Version="2.1.2" />
+            <PackageReference Include="jsreport.Binary" Version="2.6.1" />
+        </code>
+        <div id="settings-object-pdf" class="div_github"></div>
     </div>
-
-    <!--
-    <hr>
-    <h2>NgBootstrap + Modales + Eventos</h2>
-    <div id="settings-object-modals" class="div_github"></div>
-
-
-    <hr>
-    <h2>Seguridad de las Rutas => Guardas</h2>
-    <div id="settings-object-guard" class="div_github"></div>
-
-    <hr>
-    <h2>Upload  </h2>
-    <div id="settings-object-upload" class="div_github"></div>
-
-    <hr>
-    <h1>Publicar Aplicación Angular+NetCore</h1>
-    dotnet publish -c Release -o ./publish
-    <hr>
-    <h1>Publicar en Azure desde Visual Studio Code</h1>
-    Instalar Extensión - Azure App Service
-    <a href="https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-3.0">Tutorial</a>
-    -->
-  </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-  </body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.min.js"></script>
-  <script src="github-embed.min.js"></script>
-  <script>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.min.js"></script>
+<script src="github-embed.min.js"></script>
+<script>
 
-    
-    githubEmbed('#settings-object-guard', {
-    	"owner": "borisgr04",
+
+    githubEmbed('#settings-object-security', {
+        "owner": "borisgr04",
         "repo": "NgNetCoreCreditos",
         "ref": "master",
-    	"embed": [
-        {
-    		"path": "NgNetCore/ClientApp/src/ api-authorization/authorize.guard.ts",
-    	  },
-       {
-    		"path": "NgNetCore/ClientApp/src/app/app.module.ts"
-    	 }
-      ]
+        "embed": [
+            {
+                "path": "NgNetCore/ClientApp/src/app/services/auth.service.ts",
+            },
+            {
+                "path": "NgNetCore/ClientApp/src/app/guards/auth-guard.ts",
+            },
+            {
+                "path": "NgNetCore/ClientApp/src/app/app.module.ts"
+            }
+        ]
     });
 
-    
-
-    githubEmbed('#settings-object-modals', {
-    	"owner": "borisgr04",
+    githubEmbed('#settings-object-security-nav', {
+        "owner": "borisgr04",
         "repo": "NgNetCoreCreditos",
         "ref": "master",
-    	"embed": [
-        {
-          "label":"cliente-consulta-modal.component.html",
-    		  "path": "NgNetCore/ClientApp/src/app/clientes/modals/cliente-consulta-modal/cliente-consulta-modal.component.html",
-    	  },
-       {
-        "label":"cliente-consulta-modal.component.ts",
-    		"path": "NgNetCore/ClientApp/src/app/clientes/modals/cliente-consulta-modal/cliente-consulta-modal.component.ts"
-    	 }
-      ]
+        "embed": [
+            {
+                "path": "NgNetCore/ClientApp/src/app/nav-menu/nav-menu.component.html",
+            },
+            {
+                "path": "NgNetCore/ClientApp/src/app/nav-menu/nav-menu.component.ts",
+            }
+        ]
     });
+
+
 
     githubEmbed('#settings-object-upload', {
-    	"owner": "borisgr04",
+        "owner": "borisgr04",
         "repo": "NgNetCoreCreditos",
         "ref": "master",
-    	"embed": [
-        {
-    		"path": "NgNetCore/ClientApp/src/app/upload/upload.component.html"
-    	  },
-       {
-    		"path": "NgNetCore/ClientApp/src/app/upload/upload.component.ts"
-    	 },
-       {
-        "type" :  "htmlpage" ,
-    		"label":"preview",
-        "url":"https://localhost:44390/upload-file"
-    	  }
-      ]
+        "embed": [
+            {
+                "path": "NgNetCore/Controllers/UploadController.cs"
+            },
+            {
+                "path": "NgNetCore/ClientApp/src/app/upload/upload.component.html"
+            },
+            {
+                "path": "NgNetCore/ClientApp/src/app/upload/upload.component.ts"
+            },
+            {
+                "type": "htmlpage",
+                "label": "Demo",
+                "url": "https://bya01creditos.azurewebsites.net/upload-file"
+            }
+        ]
+    });
+
+      githubEmbed('#settings-object-pdf', {
+        "owner": "borisgr04",
+        "repo": "NgNetCoreCreditos",
+        "ref": "master",
+        "embed": [
+            {
+                "path": "NgNetCore/Controllers/PdfController.cs",
+            }
+        ]
     });
 
 
-    
 
-  </script>
+
+</script>
 </html>
